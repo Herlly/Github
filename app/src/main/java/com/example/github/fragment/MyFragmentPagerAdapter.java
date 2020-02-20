@@ -1,0 +1,40 @@
+package com.example.github.fragment;
+
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.github.UserActivity;
+
+import java.util.ArrayList;
+
+public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+    private InfoFragment infoFragment;
+    private RepositoryFragment repositoryFragment;
+    private final ArrayList<Fragment> fragmentlist=new ArrayList<>();
+    public MyFragmentPagerAdapter(@NonNull FragmentManager fm) {
+        super(fm);
+    }
+
+    @NonNull
+    @Override
+    public Fragment getItem(int position) {
+        return fragmentlist.get(position);
+    }
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return PagerAdapter.POSITION_NONE;
+    }
+    public void addFrag(Fragment fragment){
+        fragmentlist.add(fragment);
+    }
+    @Override
+    public int getCount() {
+        return fragmentlist.size();
+    }
+
+}
